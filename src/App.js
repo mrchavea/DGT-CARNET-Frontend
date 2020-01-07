@@ -59,18 +59,13 @@ function App() {
 
 
   return (
-    <div>
-      
-      <Container>
-          <Row>
+    <div class="container-fluid">
             <h1>Carnets</h1>
-          </Row>
           <Row>
             <Col>
               <Carnets carnets={carnets}/>
             </Col>
           </Row>
-      </Container>
     </div>
   );
 }

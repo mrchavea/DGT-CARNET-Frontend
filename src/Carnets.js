@@ -16,6 +16,29 @@ class Carnets extends React.Component{
         this.addCarnet=this.addCarnet.bind(this);
         this.handleCloseError = this.handleCloseError.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
+        this.handleRetire = this.handleRetire.bind(this);
+    }
+
+    handleRetire(carnet){
+
+        this.setState(prevState =>{
+            if(carnet.valid){
+                carnet.valid=false
+            }
+            else{
+                carnet.valid=true
+            }
+            const carnets = prevState.carnets;
+            const pos = carnets.findIndex(c => c.DNI === carnet.DNI);
+            return {
+                carnets: [...carnets.slice(0,pos), Object.assign({}, carnet), ...carnets.slice(pos+1)],
+            }
+        });
+
+        // this.setState(prevState=>({
+        //     carnets:prevState.carnets.filter((c)=>c.DNI === carnet.DNI)
+
+        // }))
     }
 
     handleDelete(carnet){
@@ -111,7 +134,8 @@ class Carnets extends React.Component{
                                     !this.state.isEditing[carnet.DNI]?
                                     <Carnet key={carnet.DNI} carnet = {carnet} 
                                     onEdit={this.handleEdit}
-                                    onDelete={this.handleDelete}/>
+                                    onDelete={this.handleDelete}
+                                    onRetire={this.handleRetire}/>
                                     :
                                     <EditCarnet key={carnet.DNI} carnet = {this.state.isEditing[carnet.DNI]} 
                                     onCancel={this.handleCancel.bind(this,carnet.DNI)}

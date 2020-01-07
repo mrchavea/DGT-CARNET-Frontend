@@ -1,15 +1,17 @@
 import React from 'react'
-import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
-import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
+import { faCheck} from "@fortawesome/free-solid-svg-icons";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 function Carnet (props){
     if(props.carnet.valid){
-        var valid= <FontAwesomeIcon icon={faCheckCircle} size="2x"/>
+        var valid= <FontAwesomeIcon icon={faCheck} size="2x"/>
+        var msg="Retirar"
 
     }
     else{
-        var valid= <FontAwesomeIcon icon={faTimesCircle} size="2x"/>
+        var valid= <FontAwesomeIcon icon={faTimes} size="2x"/>
+        var msg="Revalidar"
     }
     return(
             <tr>
@@ -21,7 +23,12 @@ function Carnet (props){
                 <td>{valid}</td>
                 <td>
                     <button className="btn btn-primary" onClick={() => props.onEdit(props.carnet)}>Editar</button>
-                    <button className="btn btn-primary" onClick={() => props.onDelete(props.carnet)}>Retirar</button>
+                </td>
+                <td>
+                <button className="btn btn-primary" onClick={() => props.onRetire(props.carnet)}>{msg}</button>
+
+                </td>
+                <td>
                     <button className="btn btn-primary" onClick={() => props.onDelete(props.carnet)}>Eliminar</button>
                 </td>
             </tr>
