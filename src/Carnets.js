@@ -120,12 +120,12 @@ class Carnets extends React.Component{
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Name</th>
-                                    <th>Surname</th>
+                                    <th>Nombre</th>
+                                    <th>Apellido</th>
                                     <th>DNI</th>
-                                    <th>Age</th>
-                                    <th>Type</th>
-                                    <th>Valid</th>
+                                    <th>Edad</th>
+                                    <th>Tipo</th>
+                                    <th>Válido</th>
                                 </tr>
                             </thead>
                             <tbody>
