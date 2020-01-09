@@ -13,9 +13,9 @@ import Col from 'react-bootstrap/Col';
 function App() {
   
   const carnets=[{
-    name: "Juan",
-    surname:"Perez",
-    DNI: "1234K",
+    name: "Pogu",
+    surname:"Pigut",
+    DNI: "49075130F",
     age: 22,
     vehicleType:"coche",
     valid:true

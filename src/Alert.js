@@ -6,7 +6,7 @@ function Alert({message,onClose}){
     }
     return(
         <div className="alert alert-warning alert-dismissable">
-            <strong>Error!</strong>{message}
+            <strong>Error: </strong>{message}
             <button type="button" className="close" onClick={()=>onClose()}>
                 <span>&times;</span>
             </button>
