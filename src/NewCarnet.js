@@ -15,19 +15,8 @@ class NewCarnet extends React.Component{
         };
         this.changeCarnet=this.changeCarnet.bind(this);
         this.clickAdd=this.clickAdd.bind(this);
-        this.resetState=this.resetState.bind(this);
     }
 
-    resetState(){
-        this.setState({
-            name:'',
-            surname: '',
-            DNI:'',
-            age:null,
-            vehicleType:'',
-            valid:true
-        });
-    }
 
     changeCarnet(event){
         const name = event.target.name;

@@ -2,6 +2,7 @@ import React from 'react'
 import Carnet from './Carnet.js'
 import NewCarnet from './NewCarnet.js'
 import EditCarnet from './EditCarnet.js'
+import SearchCarnet from './SearchCarnet.js'
 import Alert from './Alert.js'
 
 class Carnets extends React.Component{
@@ -10,13 +11,48 @@ class Carnets extends React.Component{
         this.state={
             errorInfo:null,
             carnets:this.props.carnets,
-            isEditing:{}
+            isEditing:{},
+            allCarnets:this.props.carnets
         };
         this.handleEdit = this.handleEdit.bind(this);
         this.addCarnet=this.addCarnet.bind(this);
         this.handleCloseError = this.handleCloseError.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
         this.handleRetire = this.handleRetire.bind(this);
+        this.handdleSearch= this.handdleSearch.bind(this);
+        this.handleShowAll=this.handleShowAll.bind(this);
+    }
+
+    handleShowAll(){
+        this.setState({
+            carnets: this.state.allCarnets
+        });
+    }
+
+    handdleSearch(DNI){
+        const carnets=this.state.carnets;
+        const allCarnets=this.state.allCarnets;
+
+        if(DNI===''){
+            this.setState(prevState=>({
+                errorInfo:"Introduce un DNI",
+                carnets:this.state.allCarnets
+            }))
+        }
+
+        else if(!allCarnets.find(c=>c.DNI === DNI)){
+            this.setState(prevState=>({
+                errorInfo:"No existe carnet con el DNI: "+DNI,
+                carnets:this.state.allCarnets
+            }))
+        }
+
+        else{
+            this.setState(prevState=>({  
+                carnets: prevState.allCarnets.filter((c)=>c.DNI === DNI)                            
+            }))  
+        }        
+         
     }
 
     handleRetire(carnet){
@@ -34,16 +70,12 @@ class Carnets extends React.Component{
                 carnets: [...carnets.slice(0,pos), Object.assign({}, carnet), ...carnets.slice(pos+1)],
             }
         });
-
-        // this.setState(prevState=>({
-        //     carnets:prevState.carnets.filter((c)=>c.DNI === carnet.DNI)
-
-        // }))
     }
 
     handleDelete(carnet){
         this.setState(prevState=>({
-            carnets: prevState.carnets.filter((c)=>c.DNI!== carnet.DNI)
+            carnets: prevState.carnets.filter((c)=>c.DNI!== carnet.DNI),
+            allCarnets: prevState.carnets.filter((c)=>c.DNI!== carnet.DNI),
         }))
     }
 
@@ -116,7 +148,11 @@ class Carnets extends React.Component{
                 <div>
 
                     <Alert message={this.state.errorInfo} onClose={this.handleCloseError}/>
-                
+                        
+                        <div>
+                            <SearchCarnet onAddDNI={this.handdleSearch} showAll={this.handleShowAll}></SearchCarnet><br></br>
+                        </div>
+
                         <table class="table">
                             <thead>
                                 <tr>
