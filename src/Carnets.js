@@ -150,7 +150,7 @@ class Carnets extends React.Component{
                     <Alert message={this.state.errorInfo} onClose={this.handleCloseError}/>
                         
                         <div>
-                            <SearchCarnet onAddDNI={this.handdleSearch} showAll={this.handleShowAll}></SearchCarnet><br></br>
+                            <SearchCarnet onAddDNI={this.handdleSearch} showAll={this.handleShowAll}></SearchCarnet><br> </br>
                         </div>
 
                         <table class="table">
