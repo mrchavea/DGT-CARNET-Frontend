@@ -119,9 +119,11 @@ class Carnets extends React.Component{
 
             if (DNI===carnet.DNI){
                 const carnets = prevState.carnets;
+                const allCarnets = prevState.allCarnets;
                 const pos = carnets.findIndex(c => c.DNI === carnet.DNI);
                 return {
                     carnets: [...carnets.slice(0,pos), Object.assign({}, carnet), ...carnets.slice(pos+1)],
+                    allCarnets: [...allCarnets.slice(0,pos), Object.assign({}, carnet), ...allCarnets.slice(pos+1)],
                     isEditing: isEditing
                 }
             }
@@ -138,7 +140,8 @@ class Carnets extends React.Component{
             const carnets=this.state.carnets;
             if(!carnets.find(c=>c.DNI === carnet.DNI)){
                 return({
-                    carnets:[...prevState.carnets,carnet]
+                    carnets:[...prevState.carnets,carnet],
+                    allCarnets:[...prevState.allCarnets,carnet]
                 });
             };
             
@@ -152,6 +155,10 @@ class Carnets extends React.Component{
         this.setState(prevState=>({
             isEditing: {...prevState.isEditing,[carnet.DNI]:carnet}
         }));
+                    alert(this.state.isEditing)
+                    alert(this.state.carnets)
+        alert(this.state.allCarnets)
+
     }
 
     handleCloseError(){

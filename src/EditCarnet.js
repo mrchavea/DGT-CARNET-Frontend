@@ -9,7 +9,6 @@ function EditCarnet(props){
     }
     return(
         <tr>
-            <form>
             <td><input className="forms-control" name="name" value={props.carnet.name} onChange={handleChange}/> </td>
             <td><input className="forms-control" name="surname" value={props.carnet.surname} onChange={handleChange}/> </td>
             <td><input className="forms-control" name="DNI" readonly value={props.carnet.DNI} onChange={handleChange}/> </td>
@@ -18,7 +17,6 @@ function EditCarnet(props){
             <td><FontAwesomeIcon icon={faCheck} size="2x"/></td>
             <td><button className="btn btn-primary" onClick={()=>props.onSave(props.carnet)}>Guardar</button></td>
             <td><button className="btn btn-primary" onClick={()=>props.onCancel(props.carnet)} >Cancelar</button></td>
-            </form>
         </tr>
     );
 }
