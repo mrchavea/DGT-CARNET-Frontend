@@ -59,7 +59,7 @@ function App() {
 
 
   return (
-    <div class="container-fluid">
+    <div className="container-fluid">
             <h1>Carnets</h1>
           <Row>
             <Col>
