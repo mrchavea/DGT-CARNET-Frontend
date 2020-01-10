@@ -60,7 +60,7 @@ function App() {
 
   return (
     <div className="container-fluid">
-            <h1>Carnets</h1>
+            <h1>Carnets DGT</h1>
           <Row>
             <Col>
               <Carnets/>
