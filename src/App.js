@@ -12,50 +12,50 @@ import Col from 'react-bootstrap/Col';
 
 function App() {
   
-  const carnets=[{
-    name: "Pogu",
-    surname:"Pigut",
-    DNI: "49075130F",
-    age: 22,
-    vehicleType:"coche",
-    valid:true
-  },
-  {
-    name: "Juan",
-    surname:"Perez",
-    DNI: "1234K",
-    age: 22,
-    vehicleType:"coche",
-    valid:true
+//   const carnets=[{
+//     name: "Pogu",
+//     surname:"Pigut",
+//     DNI: "49075130F",
+//     age: 22,
+//     vehicleType:"coche",
+//     valid:true
+//   },
+//   {
+//     name: "Juan",
+//     surname:"Perez",
+//     DNI: "1234K",
+//     age: 22,
+//     vehicleType:"coche",
+//     valid:true
 
-  },
-  {
-    name: "Juan",
-    surname:"Perez",
-    DNI: "1111W",
-    age: 22,
-    vehicleType:"moto",
-    valid:true
+//   },
+//   {
+//     name: "Juan",
+//     surname:"Perez",
+//     DNI: "1111W",
+//     age: 22,
+//     vehicleType:"moto",
+//     valid:true
  
-  },
-  {
-    name: "Pigut",
-    surname:"Perez",
-    DNI: "343363G",
-    age: 22,
-    vehicleType:"coche",
-    valid:false
+//   },
+//   {
+//     name: "Pigut",
+//     surname:"Perez",
+//     DNI: "343363G",
+//     age: 22,
+//     vehicleType:"coche",
+//     valid:false
  
-  },
-  {
-    name: "Juan",
-    surname:"Perez",
-    DNI: "233533E",
-    age: 22,
-    vehicleType:"coche",
-    valid:true
-  }
-];
+//   },
+//   {
+//     name: "Juan",
+//     surname:"Perez",
+//     DNI: "233533E",
+//     age: 22,
+//     vehicleType:"coche",
+//     valid:true
+//   }
+// ];
 
 
   return (
@@ -63,7 +63,7 @@ function App() {
             <h1>Carnets</h1>
           <Row>
             <Col>
-              <Carnets carnets={carnets}/>
+              <Carnets/>
             </Col>
           </Row>
     </div>

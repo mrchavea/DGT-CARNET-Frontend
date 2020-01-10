@@ -4,15 +4,16 @@ import NewCarnet from './NewCarnet.js'
 import EditCarnet from './EditCarnet.js'
 import SearchCarnet from './SearchCarnet.js'
 import Alert from './Alert.js'
+import CarnetsApi from './CarnetsApi.js'
 
 class Carnets extends React.Component{
     constructor(props){
         super(props);
         this.state={
             errorInfo:null,
-            carnets:this.props.carnets,
+            carnets:[],
             isEditing:{},
-            allCarnets:this.props.carnets
+            allCarnets:[]
         };
         this.handleEdit = this.handleEdit.bind(this);
         this.addCarnet=this.addCarnet.bind(this);
@@ -21,6 +22,22 @@ class Carnets extends React.Component{
         this.handleRetire = this.handleRetire.bind(this);
         this.handdleSearch= this.handdleSearch.bind(this);
         this.handleShowAll=this.handleShowAll.bind(this);
+    }
+
+    componentDidMount(){
+        CarnetsApi.getAllCarnets().then(
+            (result)=>{
+                this.setState({
+                    carnets:result,
+                    allCarnets:result
+                })
+            },
+            (error)=>{
+                this.setState({
+                    errorInfo:"Problemas al cargar los carnets."
+                })
+            }
+        )
     }
 
     handleShowAll(){

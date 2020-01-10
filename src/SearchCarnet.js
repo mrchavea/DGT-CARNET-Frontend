@@ -28,7 +28,7 @@ class SearchCarnet extends React.Component{
     render(){
         return(
             <div>
-                <input type="text" placeholder="Buscar DNI..." className="forms-control" name="DNI" value={this.state.DNI} onChange={this.changeDNI}/> <button onClick={this.clickAdd} className="btn btn-primary">Buscar</button> <button onClick={()=>this.props.showAll()} className="btn btn-primary">Mostrar todos</button>       
+                <input type="text" placeholder="Buscar por DNI..." className="forms-control" name="DNI" value={this.state.DNI} onChange={this.changeDNI}/> <button onClick={this.clickAdd} className="btn btn-primary">Buscar</button> <button onClick={()=>this.props.showAll()} className="btn btn-primary">Mostrar todos</button>       
             </div>
         );
     }
