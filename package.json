@@ -1,5 +1,5 @@
 {
-  "name": "conductor-frontend",
+  "name": "frontend-api-carnet",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
