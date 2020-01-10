@@ -170,7 +170,7 @@ class Carnets extends React.Component{
                             <SearchCarnet onAddDNI={this.handdleSearch} showAll={this.handleShowAll}></SearchCarnet><br></br>
                         </div>
 
-                        <table class="table">
+                        <table className="table">
                             <thead>
                                 <tr>
                                     <th>Nombre</th>
