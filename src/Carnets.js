@@ -74,26 +74,30 @@ class Carnets extends React.Component{
 
     handleRetire(carnet){
 
-        this.setState(prevState =>{
-            if(carnet.valid){
-                carnet.valid=false
-            }
-            else{
-                carnet.valid=true
-            }
-            const carnets = prevState.carnets;
-            const pos = carnets.findIndex(c => c.DNI === carnet.DNI);
-            return {
-                carnets: [...carnets.slice(0,pos), Object.assign({}, carnet), ...carnets.slice(pos+1)],
-            }
-        });
+        CarnetsApi.retireOrRevalidate(carnet.DNI,carnet.valid).then(
+            this.setState(prevState =>{
+                if(carnet.valid){
+                    carnet.valid=false
+                }
+                else{
+                    carnet.valid=true
+                }
+                const carnets = prevState.carnets;
+                const pos = carnets.findIndex(c => c.DNI === carnet.DNI);
+                return {
+                    carnets: [...carnets.slice(0,pos), Object.assign({}, carnet), ...carnets.slice(pos+1)],
+                }
+            })
+        );       
     }
 
     handleDelete(carnet){
-        this.setState(prevState=>({
-            carnets: prevState.carnets.filter((c)=>c.DNI!== carnet.DNI),
-            allCarnets: prevState.carnets.filter((c)=>c.DNI!== carnet.DNI),
-        }))
+        CarnetsApi.deleteCarnet(carnet.DNI).then(
+            this.setState(prevState=>({
+                carnets: prevState.carnets.filter((c)=>c.DNI!== carnet.DNI),
+                allCarnets: prevState.carnets.filter((c)=>c.DNI!== carnet.DNI),
+            }))
+        )
     }
 
     handleCancel(DNI,carnet){
@@ -113,52 +117,63 @@ class Carnets extends React.Component{
     }
 
     handleSave(DNI, carnet){
-        this.setState(prevState =>{
-            const isEditing = Object.assign({}, prevState.isEditing);
-            delete isEditing[DNI];
-
-            if (DNI===carnet.DNI){
-                const carnets = prevState.carnets;
-                const allCarnets = prevState.allCarnets;
-                const pos = carnets.findIndex(c => c.DNI === carnet.DNI);
-                return {
-                    carnets: [...carnets.slice(0,pos), Object.assign({}, carnet), ...carnets.slice(pos+1)],
-                    allCarnets: [...allCarnets.slice(0,pos), Object.assign({}, carnet), ...allCarnets.slice(pos+1)],
-                    isEditing: isEditing
+        const name=carnet.name
+        const surname=carnet.surname
+        const age=carnet.age
+        const vehicleType=carnet.vehicleType
+        const valid=carnet.valid
+        CarnetsApi.updateCarnet(DNI,name,surname,age,vehicleType,valid).then(
+            this.setState(prevState =>{
+                const isEditing = Object.assign({}, prevState.isEditing);
+                delete isEditing[DNI];
+    
+                if (DNI===carnet.DNI){
+                    const carnets = prevState.carnets;
+                    const allCarnets = prevState.allCarnets;
+                    const pos = carnets.findIndex(c => c.DNI === carnet.DNI);
+                    return {
+                        carnets: [...carnets.slice(0,pos), Object.assign({}, carnet), ...carnets.slice(pos+1)],
+                        allCarnets: [...allCarnets.slice(0,pos), Object.assign({}, carnet), ...allCarnets.slice(pos+1)],
+                        isEditing: isEditing
+                    }
                 }
-            }
- 
-            return{
-                errorInfo: "No se puede modificar el DNI.",
-            }
-        });
+     
+                return{
+                    errorInfo: "No se puede modificar el DNI.",
+                }
+            })
+        )
     }
 
     addCarnet(carnet){
-
-        this.setState(prevState =>{
-            const carnets=this.state.carnets;
-            if(!carnets.find(c=>c.DNI === carnet.DNI)){
+        const name=carnet.name
+        const surname=carnet.surname
+        const DNI=carnet.DNI
+        const age=carnet.age
+        const vehicleType=carnet.vehicleType
+        const valid=carnet.valid
+        CarnetsApi.addNewCarnet(name,surname,DNI,age,vehicleType,valid).then(
+            this.setState(prevState =>{
+                const carnets=this.state.carnets;
+                if(!carnets.find(c=>c.DNI === carnet.DNI)){
+                    return({
+                        carnets:[...prevState.carnets,carnet],
+                        allCarnets:[...prevState.allCarnets,carnet]
+                    });
+                };
+                
                 return({
-                    carnets:[...prevState.carnets,carnet],
-                    allCarnets:[...prevState.allCarnets,carnet]
+                    errorInfo:"Ya existe el carnet con ese DNI."
                 });
-            };
-            
-            return({
-                errorInfo:"Ya existe el carnet con ese DNI."
-            });
-        });
+            })
+        );
+        
     }
 
     handleEdit(carnet){
         this.setState(prevState=>({
             isEditing: {...prevState.isEditing,[carnet.DNI]:carnet}
         }));
-                    alert(this.state.isEditing)
-                    alert(this.state.carnets)
-        alert(this.state.allCarnets)
-
     }
 
     handleCloseError(){
