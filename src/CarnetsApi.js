@@ -1,5 +1,3 @@
-import Carnet from './Carnet.js'
-
 class CarnetsApi{
     static API_BASE_URL = "/traffic_management";
 
@@ -74,7 +72,7 @@ class CarnetsApi{
         const headers= this.requestHeaders();
         const request= new Request(CarnetsApi.API_BASE_URL+"/edit/"+DNI,{
             method:'PUT',
-            headers:{'Content-Type':'text/plain; charset=utf-8'},
+            headers:{'Content-Type':'application/json'},
             body:JSON.stringify({
                 "name":name,"surname":surname,"DNI":DNI,"age":age,"vehicleType":vehicleType,"valid":valid
             })
