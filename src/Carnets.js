@@ -28,8 +28,8 @@ class Carnets extends React.Component{
         CarnetsApi.getAllCarnets().then(
             (result)=>{
                 this.setState({
-                    carnets:result,
-                    allCarnets:result
+                    // carnets:result,
+                    // allCarnets:result
                 })
             },
             (error)=>{
