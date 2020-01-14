@@ -34,7 +34,6 @@ class Carnets extends React.Component{
             },
             (error)=>{
                 alert(error)
-                console.warn(xhr.responseText)
                 this.setState({
                     errorInfo:"Problemas al cargar los carnets."
                 })
