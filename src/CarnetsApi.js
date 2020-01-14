@@ -74,7 +74,7 @@ class CarnetsApi{
         const headers= this.requestHeaders();
         const request= new Request(CarnetsApi.API_BASE_URL+"/edit/"+DNI,{
             method:'PUT',
-            headers:{'Content-Type':'application/json'},
+            headers:{text/plain; charset=utf-8},
             body:JSON.stringify({
                 "name":name,"surname":surname,"DNI":DNI,"age":age,"vehicleType":vehicleType,"valid":valid
             })
