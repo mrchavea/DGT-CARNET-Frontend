@@ -1,5 +1,4 @@
 import Carnet from './Carnet.js'
-var cors = require('cors')
 
 class CarnetsApi{
     static API_BASE_URL = "/traffic_management";
