@@ -7,7 +7,7 @@ class CarnetsApi{
 
     static getAllCarnets(){
         const headers= this.requestHeaders();
-        const request= new Request(CarnetsApi.API_BASE_URL,{
+        const request= new Request(CarnetsApi.API_BASE_URL+"/?apikey=9bbd79c5-211d-4eac-816c-36f714cb5c12",{
             method:'GET',
             headers:{'Content-Type': 'application/json',
             'Accept': 'application/json'}
