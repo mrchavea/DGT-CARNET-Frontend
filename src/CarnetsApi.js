@@ -13,8 +13,8 @@ class CarnetsApi{
             'Accept': 'application/json'}
         });
 
-        return fetch(request).then(response=>{
-            return response.json();          
+        return fetch(request).then(response => {
+            return response.json();
         });
     }
 
