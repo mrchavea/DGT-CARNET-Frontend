@@ -9,7 +9,7 @@ class CarnetsApi{
         const headers= this.requestHeaders();
         const request= new Request(CarnetsApi.API_BASE_URL,{
             method:'GET',
-            headers:headers
+            headers:{"Accept": "application/json"}
         });
 
         return fetch(request).then(response=>{
