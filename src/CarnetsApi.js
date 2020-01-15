@@ -7,7 +7,7 @@ class CarnetsApi{
 
     static getAllCarnets(){
         const headers= this.requestHeaders();
-        const request= new Request(CarnetsApi.API_BASE_URL+"/?apikey=9bbd79c5-211d-4eac-816c-36f714cb5c12",{
+        const request= new Request(CarnetsApi.API_BASE_URL+"/?apikey=844e6444-75cf-4a97-8eec-d7852d4f6e31",{
             method:'GET',
             headers:{'Content-Type': 'application/json',
             'Accept': 'application/json'}
@@ -20,7 +20,7 @@ class CarnetsApi{
 
     static addNewCarnet(name,surname,DNI,age,vehicleType,valid){
         const headers= this.requestHeaders();
-        const request= new Request(CarnetsApi.API_BASE_URL,{
+        const request= new Request(CarnetsApi.API_BASE_URL+"/?apikey=844e6444-75cf-4a97-8eec-d7852d4f6e31",{
             method:'POST',
             headers:{'Content-Type':'application/json'},
             body:JSON.stringify({
@@ -35,7 +35,7 @@ class CarnetsApi{
 
     static deleteCarnet(DNI){
         const headers= this.requestHeaders();
-        const request= new Request(CarnetsApi.API_BASE_URL+"/remove/"+DNI,{
+        const request= new Request(CarnetsApi.API_BASE_URL+"/remove/"+DNI+"/?apikey=844e6444-75cf-4a97-8eec-d7852d4f6e31",{
             method:'DELETE',
             headers:{'Content-Type':'text/plain; charset=utf-8'}
             });
@@ -48,7 +48,7 @@ class CarnetsApi{
     static retireOrRevalidate(DNI,valid){
         const headers= this.requestHeaders();
         if(valid){
-            const request= new Request(CarnetsApi.API_BASE_URL+"/retire/"+DNI,{
+            const request= new Request(CarnetsApi.API_BASE_URL+"/retire/"+DNI+"/?apikey=844e6444-75cf-4a97-8eec-d7852d4f6e31",{
                 method:'PUT',
                 headers:{'Content-Type':'application/json'}
                 });
@@ -58,7 +58,7 @@ class CarnetsApi{
             });
         }
         else{
-            const request= new Request(CarnetsApi.API_BASE_URL+"/revalidate/"+DNI,{
+            const request= new Request(CarnetsApi.API_BASE_URL+"/revalidate/"+DNI+"/?apikey=844e6444-75cf-4a97-8eec-d7852d4f6e31",{
                 method:'PUT',
                 headers:{'Content-Type':'application/json'}
                 });
@@ -71,7 +71,7 @@ class CarnetsApi{
 
     static updateCarnet(DNI,name,surname,age,vehicleType,valid){
         const headers= this.requestHeaders();
-        const request= new Request(CarnetsApi.API_BASE_URL+"/edit/"+DNI,{
+        const request= new Request(CarnetsApi.API_BASE_URL+"/edit/"+DNI+"/?apikey=844e6444-75cf-4a97-8eec-d7852d4f6e31",{
             method:'PUT',
             headers:{'Content-Type':'application/json'},
             body:JSON.stringify({
