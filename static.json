@@ -6,7 +6,7 @@
     },
     "proxies": {
       "/api/": {
-        "origin": "https://aseguradora-conductores.herokuapp.com"
+        "origin": "${API_URL}/api"
       }
     }
   }

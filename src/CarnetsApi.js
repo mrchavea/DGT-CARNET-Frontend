@@ -1,5 +1,5 @@
 class CarnetsApi{
-    static API_BASE_URL = "/traffic_management";
+    static API_BASE_URL = "/api/v1";
 
     static requestHeaders(){
         return{}
@@ -7,7 +7,7 @@ class CarnetsApi{
 
     static getAllCarnets(){
         const headers= this.requestHeaders();
-        const request= new Request(CarnetsApi.API_BASE_URL+"/?apikey=844e6444-75cf-4a97-8eec-d7852d4f6e31",{
+        const request= new Request(CarnetsApi.API_BASE_URL+"carnets/?apikey=844e6444-75cf-4a97-8eec-d7852d4f6e31",{
             method:'GET',
             headers:{'Content-Type': 'application/json',
             'Accept': 'application/json'}
@@ -20,7 +20,7 @@ class CarnetsApi{
 
     static addNewCarnet(name,surname,DNI,age,vehicleType,valid){
         const headers= this.requestHeaders();
-        const request= new Request(CarnetsApi.API_BASE_URL+"/?apikey=844e6444-75cf-4a97-8eec-d7852d4f6e31",{
+        const request= new Request(CarnetsApi.API_BASE_URL+"carnets/?apikey=844e6444-75cf-4a97-8eec-d7852d4f6e31",{
             method:'POST',
             headers:{'Content-Type':'application/json'},
             body:JSON.stringify({
